@@ -1,0 +1,66 @@
+{
+  "data_path": "data\\dataset_",
+  "architecture": [
+    "Input(shape=(140,))",
+    "Dense(64, relu)",
+    "Dense(32, relu)",
+    "Dense(1, sigmoid)"
+  ],
+  "total_params": 11137,
+  "kernel_initializer": "glorot_uniform (Keras default)",
+  "bias_initializer": "zeros (Keras default)",
+  "regularisation": "none (no dropout, no batch norm, no weight penalties)",
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "other_optimizer_args": "Keras defaults",
+  "loss": "binary_crossentropy",
+  "metrics": [
+    "accuracy"
+  ],
+  "batch_size": 32,
+  "epochs": 100,
+  "shuffle": true,
+  "callbacks": "none",
+  "split": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15,
+    "method": "sklearn train_test_split twice (70/30, then 30 -> 50/50), stratified on class",
+    "split_seed": 42,
+    "sizes": {
+      "train": 3498,
+      "val": 750,
+      "test": 750
+    }
+  },
+  "scaling": "per-feature z-score, mean and population std (ddof=0) from train set only",
+  "threshold": 0.5,
+  "threshold_rule": "pred = prob > 0.5",
+  "main_seed": 42,
+  "repeat_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "seeding": "keras.utils.set_random_seed(seed) immediately before building each model",
+  "aggregate_std": "sample std (ddof=1) over repeat seeds",
+  "op_determinism": {
+    "enabled": true,
+    "message": "enabled"
+  },
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "tensorflow": "2.21.0",
+    "keras": "3.15.1",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "os": "Windows-11-10.0.26300-SP0",
+  "cpu": "Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz",
+  "gpu_devices": []
+}

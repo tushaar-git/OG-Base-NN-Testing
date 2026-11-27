@@ -1,0 +1,50 @@
+Op determinism: enabled
+Data: 4998 rows x 140 features
+  train: 3498 rows, class1 = 0.5840
+  val  :  750 rows, class1 = 0.5840
+  test :  750 rows, class1 = 0.5840
+
+=== Run 1: seed 42 ===
+Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ dense (Dense)                        │ (None, 64)                  │           9,024 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 32)                  │           2,080 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 1)                   │              33 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 33,413 (130.52 KB)
+ Trainable params: 11,137 (43.50 KB)
+ Non-trainable params: 0 (0.00 B)
+ Optimizer params: 22,276 (87.02 KB)
+
+Total parameters: 11,137  [OK]
+Seed 42: final train loss 0.0000, acc 1.0000 | final val loss 0.0722, acc 0.9893
+Seed 42: lowest val_loss 0.0151 at epoch 7
+Seed 42: training time 20.2 s
+
+=== Run 2: seeds 0, 1, 2, 3, 4 ===
+
+=== Per-run test metrics ===
+seed 42: loss 0.2140  acc 0.9880  prec 0.9908  rec 0.9886  f1 0.9897  auc 0.9972  time 20.2s
+         confusion [[TN, FP],[FN, TP]] = [[308, 4],[5, 433]]
+seed  0: loss 0.1668  acc 0.9867  prec 0.9886  rec 0.9886  f1 0.9886  auc 0.9975  time 21.4s
+         confusion [[TN, FP],[FN, TP]] = [[307, 5],[5, 433]]
+seed  1: loss 0.1273  acc 0.9907  prec 0.9954  rec 0.9886  f1 0.9920  auc 0.9987  time 19.0s
+         confusion [[TN, FP],[FN, TP]] = [[310, 2],[5, 433]]
+seed  2: loss 0.1145  acc 0.9893  prec 0.9931  rec 0.9886  f1 0.9908  auc 0.9976  time 20.6s
+         confusion [[TN, FP],[FN, TP]] = [[309, 3],[5, 433]]
+seed  3: loss 0.2367  acc 0.9853  prec 0.9863  rec 0.9886  f1 0.9875  auc 0.9954  time 18.5s
+         confusion [[TN, FP],[FN, TP]] = [[306, 6],[5, 433]]
+seed  4: loss 0.1572  acc 0.9880  prec 0.9931  rec 0.9863  f1 0.9897  auc 0.9974  time 18.5s
+         confusion [[TN, FP],[FN, TP]] = [[309, 3],[6, 432]]
+
+=== Across seeds [0, 1, 2, 3, 4] (mean ± sample std, ddof=1) ===
+  test_accuracy : 0.9880 ± 0.0021
+  f1            : 0.9897 ± 0.0018
+  roc_auc       : 0.9973 ± 0.0012
+  train_time_s  : 19.6004 ± 1.3370
+
+Op determinism enabled: True (enabled)
